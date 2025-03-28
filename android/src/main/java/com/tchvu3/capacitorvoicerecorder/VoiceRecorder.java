@@ -107,7 +107,7 @@ public class VoiceRecorder extends Plugin {
             if (options.getDirectory() != null) {
                 path = recordedFile.getName();
                 if (options.getSubDirectory() != null) {
-                  path = options.getSubDirectory() + "/" + path;
+                    path = options.getSubDirectory() + "/" + path;
                 }
             } else {
                 recordDataBase64 = readRecordedFileAsBase64(recordedFile);
