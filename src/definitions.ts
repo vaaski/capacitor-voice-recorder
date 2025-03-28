@@ -7,7 +7,7 @@ export interface RecordingData {
     recordDataBase64?: Base64String;
     msDuration: number;
     mimeType: string;
-    uri?: string;
+    path?: string;
   };
 }
 
