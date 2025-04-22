@@ -26,8 +26,8 @@ import {
 // these mime types will be checked one by one in order until one of them is found to be supported by the current browser
 const POSSIBLE_MIME_TYPES = {
   'audio/aac': '.aac',
-  'audio/webm;codecs=opus': '.ogg',
   'audio/mp4': '.mp3',
+  'audio/webm;codecs=opus': '.ogg',
   'audio/webm': '.ogg',
   'audio/ogg;codecs=opus': '.ogg',
 };
