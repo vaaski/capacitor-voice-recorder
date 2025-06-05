@@ -1,4 +1,3 @@
-import { Filesystem } from '@capacitor/filesystem';
 import write_blob from 'capacitor-blob-writer';
 import getBlobDuration from 'get-blob-duration';
 
@@ -178,11 +177,11 @@ export class VoiceRecorderImpl {
           return;
         }
 
-        let uri;
+        let path;
         let recordDataBase64;
         if (options != null) {
           const subDirectory = options.subDirectory?.match(/^\/?(.+[^/])\/?$/)?.[1] ?? '';
-          const path = `${subDirectory}/recording-${new Date().getTime()}${POSSIBLE_MIME_TYPES[mimeType]}`;
+          path = `${subDirectory}/recording-${new Date().getTime()}${POSSIBLE_MIME_TYPES[mimeType]}`;
 
           await write_blob({
             blob: blobVoiceRecording,
@@ -191,15 +190,13 @@ export class VoiceRecorderImpl {
             path,
             recursive: true,
           });
-
-          ({ uri } = await Filesystem.getUri({ directory: options.directory, path }));
         } else {
           recordDataBase64 = await VoiceRecorderImpl.blobToBase64(blobVoiceRecording);
         }
 
         const recordingDuration = await getBlobDuration(blobVoiceRecording);
         this.prepareInstanceForNextOperation();
-        resolve({ value: { recordDataBase64, mimeType, msDuration: recordingDuration * 1000, uri } });
+        resolve({ value: { recordDataBase64, mimeType, msDuration: recordingDuration * 1000, path } });
       };
       this.mediaRecorder.ondataavailable = (event: any) => this.chunks.push(event.data);
       this.mediaRecorder.start();
