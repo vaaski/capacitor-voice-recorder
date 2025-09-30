@@ -33,7 +33,7 @@
     "android/src/main/",
     "android/build.gradle",
     "dist/",
-    "CapacitorVoiceRecorder.podspec",
+    "VaaskiCapacitorVoiceRecorder.podspec",
     "ios/Sources",
     "ios/Tests",
     "Package.swift"
