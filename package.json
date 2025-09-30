@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-voice-recorder",
+  "name": "@vaaski/capacitor-voice-recorder",
   "version": "7.0.5",
   "description": "Capacitor plugin for voice recording",
   "keywords": [
