@@ -2,29 +2,6 @@
   "name": "capacitor-voice-recorder",
   "version": "7.0.5",
   "description": "Capacitor plugin for voice recording",
-  "main": "dist/plugin.cjs.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
-  "unpkg": "dist/plugin.js",
-  "files": [
-    "android/src/main/",
-    "android/build.gradle",
-    "dist/",
-    "ios/Plugin/",
-    "CapacitorVoiceRecorder.podspec"
-  ],
-  "author": {
-    "name": "Avihu Harush",
-    "email": "tchvu3@gmail.com"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tchvu3/capacitor-voice-recorder.git"
-  },
-  "bugs": {
-    "url": "https://github.com/tchvu3/capacitor-voice-recorder/issues"
-  },
   "keywords": [
     "capacitor",
     "plugin",
@@ -36,22 +13,51 @@
     "ios",
     "android"
   ],
+  "bugs": {
+    "url": "https://github.com/tchvu3/capacitor-voice-recorder/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tchvu3/capacitor-voice-recorder.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Avihu Harush",
+    "email": "tchvu3@gmail.com"
+  },
+  "main": "dist/plugin.cjs.js",
+  "unpkg": "dist/plugin.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "android/src/main/",
+    "android/build.gradle",
+    "dist/",
+    "CapacitorVoiceRecorder.podspec",
+    "ios/Sources",
+    "ios/Tests",
+    "Package.swift"
+  ],
   "scripts": {
-    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin -destination generic/platform=iOS && cd ..",
-    "verify:android": "cd android && ./gradlew clean build test && cd ..",
-    "verify:web": "npm run build",
-    "lint": "npm run eslint && npm run prettier -- --check",
-    "lint-with-ios": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
-    "fmt": "npm run eslint -- --fix && npm run prettier -- --write",
-    "eslint": "eslint . --ext ts",
-    "prettier": "prettier \"**/*.{css,html,ts,js,java}\" --plugin=prettier-plugin-java",
-    "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api VoiceRecorderPlugin --output-readme README.md --output-json dist/docs.json",
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
-    "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "docgen": "docgen --api VoiceRecorderPlugin --output-readme README.md --output-json dist/docs.json",
+    "eslint": "eslint . --ext ts",
+    "fmt": "npm run eslint -- --fix && npm run prettier -- --write",
+    "lint": "npm run eslint && npm run prettier -- --check",
+    "lint-with-ios": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
+    "prepublishOnly": "npm run build",
+    "prettier": "prettier \"**/*.{css,html,ts,js,java}\" --plugin=prettier-plugin-java",
+    "swiftlint": "node-swiftlint",
+    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
+    "verify:android": "cd android && ./gradlew clean build test && cd ..",
+    "verify:ios": "xcodebuild -scheme CapacitorVoiceRecorder -destination generic/platform=iOS",
+    "verify:web": "npm run build",
+    "watch": "tsc --watch"
+  },
+  "prettier": "@ionic/prettier-config",
+  "eslintConfig": {
+    "extends": "@ionic/eslint-config/recommended"
   },
   "dependencies": {
     "capacitor-blob-writer": "^1.1.19",
@@ -77,11 +83,6 @@
   "peerDependencies": {
     "@capacitor/core": ">=7.0.0"
   },
-  "prettier": "@ionic/prettier-config",
-  "swiftlint": "@ionic/swiftlint-config",
-  "eslintConfig": {
-    "extends": "@ionic/eslint-config/recommended"
-  },
   "capacitor": {
     "ios": {
       "src": "ios"
@@ -89,5 +90,6 @@
     "android": {
       "src": "android"
     }
-  }
+  },
+  "swiftlint": "@ionic/swiftlint-config"
 }
